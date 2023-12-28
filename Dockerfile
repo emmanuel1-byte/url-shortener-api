@@ -1,14 +1,35 @@
-# Base Image
-FROM node:18-alpine 
+# Use the Node.js 18 Alpine image as the base
+FROM node:18-alpine
 
+# Install build tools required by some npm packages
+RUN apk add --no-cache --virtual .build-deps \
+    python \
+    make \
+    g++ \
+    && apk add --no-cache --virtual .npm-deps \
+    git \
+    openssh
+
+# Install node-pre-gyp globally
+RUN npm install -g node-pre-gyp
+
+# Create and set the working directory in the container
 WORKDIR C:\Users\user\Desktop\project folder\BackendProjects\Url-shortener Backend
 
+# Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
+# Install dependencies
+RUN npm install
+
+# Copy the entire project to the working directory
 COPY . .
 
-RUN npm install 
+# Build TypeScript code
+RUN npm run build
 
-CMD ["node", "src/index.js"]
+# Expose the port your app runs on
+EXPOSE 3000
 
-EXPOSE 5000
+# Command to run the application (assuming the compiled JavaScript is in 'build' directory)
+CMD ["npm", "start"]
