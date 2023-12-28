@@ -1,15 +1,6 @@
 # Use the Node.js 18 Alpine image as the base
 FROM node:18-alpine
 
-# Install build tools required by some npm packages
-RUN apk add --no-cache --virtual .build-deps \
-    python \
-    make \
-    g++ \
-    && apk add --no-cache --virtual .npm-deps \
-    git \
-    openssh
-
 # Install node-pre-gyp globally
 RUN npm install -g node-pre-gyp
 

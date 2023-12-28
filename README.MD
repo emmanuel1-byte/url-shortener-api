@@ -13,7 +13,7 @@ This is a Url shortener REST API written in Typescript
 
 2. Install dependencies:
 
-  ```bash
+   ```bash
    cd <Express-js Starter-Ts> 
    rm -rf .git 
    npm install
@@ -22,4 +22,4 @@ This is a Url shortener REST API written in Typescript
 3. Build and run the project:
 
    ```bash
-    npm start  
+   npm start  
