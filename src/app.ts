@@ -23,7 +23,7 @@ app.use(helmet())
 
 app.use(cors())
 
-app.use('/api/v1/links', urlRouter)
+app.use('/', urlRouter)
 
 app.get('/', (req: Request, res: Response)=>{
     respond(res, 200, 'Url shortener API is running...')
