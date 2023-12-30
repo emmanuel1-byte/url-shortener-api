@@ -32,12 +32,10 @@ class UrlController {
                 return (0, respond_1.default)(res, 201, 'Url shortened successfully', { short_url: url.short_url });
             }
             catch (err) {
-                console.error(err);
                 return (0, respond_1.default)(res, 500, 'Internal Server Error: Failed to create short url');
             }
         });
     }
-    //Retrieve the original url and redirect if url_id param is valid.
     static getUrl(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
@@ -48,7 +46,6 @@ class UrlController {
                 return res.redirect(url.original_url);
             }
             catch (err) {
-                console.error(err);
                 return (0, respond_1.default)(res, 500, 'Internal Server Error: Failed to retrieve original url');
             }
         });

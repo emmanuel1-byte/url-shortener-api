@@ -20,10 +20,9 @@ export class UrlService {
 
     static async retrieveUrl(shortCode: string) {
         try {
-            const resultSet = await Url.findOne({short_code: shortCode})
+            const resultSet = await Url.findOne({ short_code: shortCode })
             return resultSet
         } catch (err) {
-            console.error(err)
             throw new Error('Failed to retrieve url')
         }
     }

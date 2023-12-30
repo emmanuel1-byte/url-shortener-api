@@ -37,7 +37,6 @@ class UrlService {
                 return resultSet;
             }
             catch (err) {
-                console.error(err);
                 throw new Error('Failed to retrieve url');
             }
         });

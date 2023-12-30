@@ -15,12 +15,10 @@ export class UrlController {
             if (!url) return respond(res, 500, 'Failed to shorten Url')
             return respond(res, 201, 'Url shortened successfully', { short_url: url.short_url })
         } catch (err) {
-            console.error(err)
             return respond(res, 500, 'Internal Server Error: Failed to create short url')
         }
     }
 
-    //Retrieve the original url and redirect if url_id param is valid.
     static async getUrl(req: Request, res: Response) {
         try {
             const shortCode = req.params.code
@@ -28,7 +26,6 @@ export class UrlController {
             if (!url) return respond(res, 404, 'Url not found', { url })
             return res.redirect(url.original_url)
         } catch (err) {
-            console.error(err)
             return respond(res, 500, 'Internal Server Error: Failed to retrieve original url')
         }
     }
