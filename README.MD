@@ -14,12 +14,11 @@ This is a Url shortener REST API written in Typescript
 2. Install dependencies:
 
    ```bash
-   cd <Express-js Starter-Ts> 
-   rm -rf .git 
+   cd Url-shortener-Backend 
    npm install
 
 
-3. Build and run the project:
+3. Build and run the project :
 
    ```bash
    npm start  

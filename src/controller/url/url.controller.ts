@@ -9,12 +9,13 @@ export class UrlController {
             if (!domain) {
                 const url = await UrlService.createUrl(long_url)
                 if (!url) return respond(res, 500, 'Failed to shorten Url')
-                return respond(res, 201, 'Url shortened successfully', { url })
+                return respond(res, 201, 'Url shortened successfully', { short_url: url.short_url })
             }
             const url = await UrlService.createUrl(long_url, domain)
             if (!url) return respond(res, 500, 'Failed to shorten Url')
-            return respond(res, 201, 'Url shortened successfully', { url })
+            return respond(res, 201, 'Url shortened successfully', { short_url: url.short_url })
         } catch (err) {
+            console.error(err)
             return respond(res, 500, 'Internal Server Error: Failed to create short url')
         }
     }
@@ -22,11 +23,12 @@ export class UrlController {
     //Retrieve the original url and redirect if url_id param is valid.
     static async getUrl(req: Request, res: Response) {
         try {
-            const url_id = req.params.id
-            const url = await UrlService.retrieveUrl(url_id)
+            const shortCode = req.params.code
+            const url = await UrlService.retrieveUrl(shortCode)
             if (!url) return respond(res, 404, 'Url not found', { url })
             return res.redirect(url.original_url)
         } catch (err) {
+            console.error(err)
             return respond(res, 500, 'Internal Server Error: Failed to retrieve original url')
         }
     }

@@ -4,6 +4,9 @@ FROM node:18-alpine
 # Install node-pre-gyp globally
 RUN npm install -g node-pre-gyp
 
+# Install rimraf globally
+RUN npm install -g rimraf
+
 # Create and set the working directory in the container
 WORKDIR C:\Users\user\Desktop\project folder\BackendProjects\Url-shortener Backend
 
@@ -12,6 +15,9 @@ COPY package*.json ./
 
 # Install dependencies
 RUN npm install
+
+# Install TypeScript globally
+RUN npm install -g typescript
 
 # Copy the entire project to the working directory
 COPY . .

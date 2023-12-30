@@ -5,6 +5,6 @@ const router = express.Router()
 
 router.post('/', validateUrl, UrlController.generateUrl)
 
-router.get('/:id', UrlController.getUrl)
+router.get('/:code', UrlController.getUrl)
 
 export default router

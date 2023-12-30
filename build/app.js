@@ -25,13 +25,13 @@ app.use('/api/v1/links', url_routes_1.default);
 app.get('/', (req, res) => {
     (0, respond_1.default)(res, 200, 'Express API is running...');
 });
-app.use(function (err, req, res) {
+app.use(function (err, req, res, next) {
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
     res.status(err.status || 500);
     res.json(err);
 });
-app.get('*', (req, res) => {
+app.use('*', (req, res) => {
     (0, respond_1.default)(res, 400, 'Endpoint does not exist');
 });
 exports.default = app;

@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { NextFunction } from 'express'
 import { Request, Response } from 'express'
 import respond from './utils/respond'
 import cors from 'cors'
@@ -30,7 +30,7 @@ app.get('/', (req: Request, res: Response)=>{
     
 })
 
-app.use(function(err: any, req: Request, res: Response){
+app.use(function(err: any, req: Request, res: Response, next: NextFunction){
     res.locals.message = err.message
     res.locals.error = req.app.get('env') === 'development' ? err : {}
 
@@ -38,7 +38,7 @@ app.use(function(err: any, req: Request, res: Response){
     res.json(err)
 })
 
-app.get('*', (req: Request, res: Response)=>{
+app.use('*', (req: Request, res: Response)=>{
     respond(res, 400, 'Endpoint does not exist')
 })
 

@@ -26,7 +26,6 @@ class UrlService {
                 return resultSet;
             }
             catch (err) {
-                console.error(err);
                 throw new Error('Failed to shorten url');
             }
         });
@@ -38,7 +37,6 @@ class UrlService {
                 return resultSet;
             }
             catch (err) {
-                console.error(err);
                 throw new Error('Failed to retrieve url');
             }
         });
