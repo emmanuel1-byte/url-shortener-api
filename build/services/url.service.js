@@ -18,11 +18,11 @@ class UrlService {
             try {
                 if (!domain) {
                     const short_url = `${process.env.BASE_URL}${(0, nanoid_1.nanoid)(3)}`;
-                    const resultSet = yield url_model_1.Url.create({ original_url: long_url, short_url: short_url });
+                    const resultSet = yield url_model_1.Url.create({ original_url: long_url, short_url: short_url, short_code: short_url.slice(22) });
                     return resultSet;
                 }
                 const short_url = `${process.env.BASE_URL}${domain}`;
-                const resultSet = yield url_model_1.Url.create({ original_url: long_url, short_url: short_url });
+                const resultSet = yield url_model_1.Url.create({ original_url: long_url, short_url: short_url, short_code: short_url.slice(22) });
                 return resultSet;
             }
             catch (err) {
@@ -30,13 +30,14 @@ class UrlService {
             }
         });
     }
-    static retrieveUrl(_id) {
+    static retrieveUrl(shortCode) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const resultSet = yield url_model_1.Url.findById({ _id });
+                const resultSet = yield url_model_1.Url.findOne({ short_code: shortCode });
                 return resultSet;
             }
             catch (err) {
+                console.error(err);
                 throw new Error('Failed to retrieve url');
             }
         });

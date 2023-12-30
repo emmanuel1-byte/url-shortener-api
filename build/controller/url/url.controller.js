@@ -24,14 +24,15 @@ class UrlController {
                     const url = yield url_service_1.UrlService.createUrl(long_url);
                     if (!url)
                         return (0, respond_1.default)(res, 500, 'Failed to shorten Url');
-                    return (0, respond_1.default)(res, 201, 'Url shortened successfully', { url });
+                    return (0, respond_1.default)(res, 201, 'Url shortened successfully', { short_url: url.short_url });
                 }
                 const url = yield url_service_1.UrlService.createUrl(long_url, domain);
                 if (!url)
                     return (0, respond_1.default)(res, 500, 'Failed to shorten Url');
-                return (0, respond_1.default)(res, 201, 'Url shortened successfully', { url });
+                return (0, respond_1.default)(res, 201, 'Url shortened successfully', { short_url: url.short_url });
             }
             catch (err) {
+                console.error(err);
                 return (0, respond_1.default)(res, 500, 'Internal Server Error: Failed to create short url');
             }
         });
@@ -40,13 +41,14 @@ class UrlController {
     static getUrl(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const url_id = req.params.id;
-                const url = yield url_service_1.UrlService.retrieveUrl(url_id);
+                const shortCode = req.params.code;
+                const url = yield url_service_1.UrlService.retrieveUrl(shortCode);
                 if (!url)
                     return (0, respond_1.default)(res, 404, 'Url not found', { url });
                 return res.redirect(url.original_url);
             }
             catch (err) {
+                console.error(err);
                 return (0, respond_1.default)(res, 500, 'Internal Server Error: Failed to retrieve original url');
             }
         });

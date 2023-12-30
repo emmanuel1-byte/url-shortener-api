@@ -8,5 +8,5 @@ const url_controller_1 = require("../controller/url/url.controller");
 const validateUrl_1 = require("../utils/validateUrl");
 const router = express_1.default.Router();
 router.post('/', validateUrl_1.validateUrl, url_controller_1.UrlController.generateUrl);
-router.get('/:id', url_controller_1.UrlController.getUrl);
+router.get('/:code', url_controller_1.UrlController.getUrl);
 exports.default = router;

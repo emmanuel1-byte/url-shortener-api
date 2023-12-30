@@ -1,4 +1,4 @@
-# Express js Starter-Ts
+# Url-Shortner
 This is a Url shortener REST API written in Typescript
 
 # Pre-requisites
