@@ -18,11 +18,11 @@ class UrlService {
             try {
                 if (!domain) {
                     const short_url = `${process.env.BASE_URL}${(0, nanoid_1.nanoid)(3)}`;
-                    const resultSet = yield url_model_1.Url.create({ original_url: long_url, short_url: short_url, short_code: short_url.slice(22) });
+                    const resultSet = yield url_model_1.Url.create({ original_url: long_url, short_url: short_url, short_code: short_url.slice(48) });
                     return resultSet;
                 }
                 const short_url = `${process.env.BASE_URL}${domain}`;
-                const resultSet = yield url_model_1.Url.create({ original_url: long_url, short_url: short_url, short_code: short_url.slice(22) });
+                const resultSet = yield url_model_1.Url.create({ original_url: long_url, short_url: short_url, short_code: short_url.slice(48) });
                 return resultSet;
             }
             catch (err) {

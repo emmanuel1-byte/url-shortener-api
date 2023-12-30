@@ -40,7 +40,7 @@ class UrlController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const shortCode = req.params.code;
-                const url = yield url_service_1.UrlService.retrieveUrl(shortCode);
+                const url = yield url_service_1.UrlService.retrieveUrl(shortCode.slice(48));
                 if (!url)
                     return (0, respond_1.default)(res, 404, 'Url not found', { url });
                 return res.redirect(url.original_url);
