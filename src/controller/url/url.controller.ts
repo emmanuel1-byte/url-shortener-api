@@ -22,7 +22,7 @@ export class UrlController {
     static async getUrl(req: Request, res: Response) {
         try {
             const shortCode = req.params.code
-            const url = await UrlService.retrieveUrl(shortCode)
+            const url = await UrlService.retrieveUrl(shortCode.slice(22))
             if (!url) return respond(res, 404, 'Url not found', { url })
             return res.redirect(url.original_url)
         } catch (err) {
