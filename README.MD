@@ -22,3 +22,6 @@ This is a Url shortener REST API written in Typescript
 
    ```bash
    npm start  
+
+# Postman Documentation
+https://www.postman.com/cloudy-escape-698934/workspace/project-workspace/collection/24822385-a84e217a-eb43-457d-8ecb-d6581b29a5a0?action=share&creator=24822385
