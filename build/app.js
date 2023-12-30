@@ -23,7 +23,7 @@ app.use((0, helmet_1.default)());
 app.use((0, cors_1.default)());
 app.use('/api/v1/links', url_routes_1.default);
 app.get('/', (req, res) => {
-    (0, respond_1.default)(res, 200, 'Express API is running...');
+    (0, respond_1.default)(res, 200, 'Url shortener API is running...');
 });
 app.use(function (err, req, res, next) {
     res.locals.message = err.message;

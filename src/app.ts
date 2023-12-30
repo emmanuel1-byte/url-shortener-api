@@ -26,7 +26,7 @@ app.use(cors())
 app.use('/api/v1/links', urlRouter)
 
 app.get('/', (req: Request, res: Response)=>{
-    respond(res, 200, 'Express API is running...')
+    respond(res, 200, 'Url shortener API is running...')
     
 })
 
