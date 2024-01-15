@@ -23,7 +23,7 @@ function onError(error) {
         process.exit(1);
     }
 }
-//Event Emmitter that listens to error Event
+//Event Handler that listens to error Event
 server.on('error', onError);
 //Database connection
 //Run the server
