@@ -19,11 +19,9 @@ export class UrlService {
     static async createUrl(long_url: string) {
         try {
                 const short_url = `${process.env.BASE_URL}/${nanoid(3)}`
-                console.log(short_url)
                 const resultSet = await Url.create({ original_url: long_url, short_url: short_url, short_code: short_url.slice(40) })
                 return resultSet
         } catch (err) {
-            console.error(err)
             throw new Error('Failed to shorten url')
         }
     }
